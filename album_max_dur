@@ -1,0 +1,10 @@
+#Надо выбрать 5 альбомов с максимальной продолжительностью (суммарно всех треков). Вывести название альбома, количество треков и продолжительность в минутах
+SELECT 
+    a.name AS album_name, 
+    COUNT(t.id) AS track_count, 
+    ROUND(SUM(t.duration_ms) / 60, 2) AS duration_minutes
+FROM d_album a
+JOIN d_track t ON a.id = t.album_id
+GROUP BY a.id, a.name
+ORDER BY SUM(t.duration_ms) DESC
+LIMIT 5;
