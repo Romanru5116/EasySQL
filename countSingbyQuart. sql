@@ -1,0 +1,8 @@
+#В течении года 4 квартала. Надо вывести, в каком квартале сколько песен было выпущено (только для тех песен, для которых это можно понять).
+
+#Какая в каком квартале была средняя продолжительность песен в секундах?
+
+select EXTRACT(QUARTER FROM da.release_date) RelQuart, count(da.total_tracks) from d_album da, d_track
+where release_date is not null
+group by RelQuart 
+order by RelQuart desc;
