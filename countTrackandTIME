@@ -1,0 +1,9 @@
+#поквартальная выборка песен и средней продолжительности песен альбома
+SELECT extract(quarter from A.release_date) as quarter, COUNT(DISTINCT T.spotify_id) AS cnt,
+      ROUND(AVG(T.duration_ms)/1000.0,2) AS avg_minutes_duration
+FROM music.d_album A
+JOIN music.d_track T ON
+   T.album_id = A.id
+WHERE A.release_date_precision IN ('day', 'month')
+GROUP BY quarter
+ORDER BY quarter;
