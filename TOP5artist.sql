@@ -1,1 +1,15 @@
 Для TOP5 самых популярных исполнителей (больше всего подписчиков), выведите название исполнителя, длину в секундах и название его самого длинного трека.
+  SELECT artist_name, followers, track_name, duration_sec
+FROM (
+   SELECT A.id, A.name AS artist_name, A.followers,
+          T.duration_ms/1000 AS duration_sec, T.name AS track_name,
+          ROW_NUMBER() OVER (PARTITION BY A.id ORDER BY T.duration_ms DESC) AS N
+   FROM music.d_artists A
+   JOIN music.r_track_artist R ON
+       A.id = R.artisit_id
+   JOIN music.d_track T ON
+       R.track_id = T.id
+)
+WHERE N = 1
+ORDER BY followers DESC
+LIMIT 5;
