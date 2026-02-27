@@ -6,7 +6,7 @@ FROM (
           ROW_NUMBER() OVER (PARTITION BY A.id ORDER BY T.duration_ms DESC) AS N
    FROM music.d_artists A
    JOIN music.r_track_artist R ON
-       A.id = R.artisit_id
+       A.id = R.artist_id
    JOIN music.d_track T ON
        R.track_id = T.id
 )
