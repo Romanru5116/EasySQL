@@ -1,6 +1,0 @@
-# процент заказов с прокодом - 2знака после запятой, показ в процентах
-SELECT TO_CHAR(
-    (SELECT COUNT(*) FROM orders WHERE promocode_id IS NOT NULL)::float / 
-    NULLIF((SELECT COUNT(*) FROM orders), 0) * 100, 
-    'FM999990.00'
-) AS promo_orders_percentage
