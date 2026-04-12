@@ -1,0 +1,3 @@
+#учим ежедневно - решаем задачки
+статус
+![экран](https://github.com/Romanru5116/EasySQL/blob/3306f4112bd868e3694c100bd770bb455e12926c/PIC/Screenshot%20solvitstatusfrom%202026-04-12%2010-54-09.png)
