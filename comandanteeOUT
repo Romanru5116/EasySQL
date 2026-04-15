@@ -1,0 +1,12 @@
+#Выведите список сотрудников, чей руководитель (chief_id) работает в другом отделе или отсутствует.
+
+SELECT 
+    e.id, 
+    e.name
+FROM 
+    employees e
+LEFT JOIN 
+    employees c ON e.chief_id = c.id
+WHERE 
+    e.chief_id IS NULL 
+    OR e.department_id <> c.department_id;
