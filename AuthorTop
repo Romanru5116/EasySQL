@@ -1,0 +1,14 @@
+# отбираем топ 5 авторов с наибоьшим числом проданных книг
+SELECT 
+    au.author_id AS author_id, 
+    au.author_name AS author_name, 
+    SUM(bo.book_sold) AS total_books_sold
+FROM authors au
+JOIN books_authors ba ON ba.author_id = au.author_id
+JOIN books bo ON bo.book_id = ba.book_id
+GROUP BY 
+    au.author_id, 
+    au.author_name
+ORDER BY 
+    total_books_sold DESC
+LIMIT 5;
